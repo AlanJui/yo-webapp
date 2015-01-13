@@ -48,10 +48,14 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      sass: {
+      compass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['compass:server', 'autoprefixer']
       },
+      // sass: {
+      //   files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+      //   tasks: ['sass:server', 'autoprefixer']
+      // },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -149,31 +153,59 @@ module.exports = function (grunt) {
       }
     },
 
-    // Compiles Sass to CSS and generates necessary files if requested
-    sass: {
+    // Compiles Compass to CSS
+    compass: {
       options: {
-        sourceMap: true,
-        includePaths: ['bower_components']
-        },
+        sassDir: '<%= config.app %>/styles',
+        cssDir: '.tmp/styles',
+        imagesDir: '<%= config.app %>/images',
+        javascriptsDir: '<%= config.app %>/scripts',
+        fontsDir: '<%= config.app %>/styles/fonts',
+        generatedImagesDir: '.tmp/images/generated',
+        importPath: 'bower_components',
+        httpImagesPath: '../images',
+        httpGeneratedImagesPath: '../images/generated',
+        httpFontsPath: 'fonts',
+        relativeAssets: false,
+        assetCacheBuster: false
+      },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+        options: {
+          generatedImagesDir: '<%= config.dist %>/images/generated'
+        }
       },
       server: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+        options: {
+          debugInfo: true
+        }
       }
     },
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    // sass: {
+    //   options: {
+    //     sourceMap: true,
+    //     includePaths: ['bower_components']
+    //     },
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= config.app %>/styles',
+    //       src: ['*.{scss,sass}'],
+    //       dest: '.tmp/styles',
+    //       ext: '.css'
+    //     }]
+    //   },
+    //   server: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= config.app %>/styles',
+    //       src: ['*.{scss,sass}'],
+    //       dest: '.tmp/styles',
+    //       ext: '.css'
+    //     }]
+    //   }
+    // },
 
     // Add vendor prefixed styles
     autoprefixer: {
@@ -349,14 +381,16 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'sass:server',
+        // 'sass:server',
+        'compass:server',
         'copy:styles'
       ],
       test: [
         'copy:styles'
       ],
       dist: [
-        'sass',
+        // 'sass',
+        'compass',
         'copy:styles',
         'imagemin',
         'svgmin'

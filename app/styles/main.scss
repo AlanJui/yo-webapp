@@ -1,92 +1,94 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-/* Space out content a bit */
+$bg-color: #efefef;
+$secondy-text-color: #D9DADA;
+$highlight-text-color: white;
+$button-color: #6cdcac;
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 62.5%;
+    text-align: center;
 }
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.hero {
+    max-width: 100em;
+    margin: 0 auto;
+    header {
+        img {
+            width: 8em;
+            height: 2em;
+            float: left;
+        }
+        ul {
+            float: right;
+            li {
+                float: left;
+                margin: 1em .5em;
+                padding: .5em 1em;
+                border: 1px solid transparent;
+                border-radius: 2px;
+                &:last-child {
+                    border: 1px solid $highlight-text-color;
+                }
+            }
+        }
+        @include clearfix;
+    }
+    h1 {
+        font-size: 4em;
+        padding: 1em 0 .5em 0;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    background: url('/images/find-an-agent-hero.png');
+    background-size: cover;
+    color: $highlight-text-color;
+    form {
+        padding: 2em 0 4em 0;
+        input[type="text"] {
+            padding: 1em;
+            border: 0;
+            width: 18em;
+            border-radius: 2px 0 0 2px;
+            background: $bg-color;
+            opacity: .3;
+        }
+        input[type="button"] {
+            color: $highlight-text-color;
+            padding: 1em;
+            border: 0;
+            width: 6em;
+            border-radius: 0 2px 2px 0;
+            background-color: lightgreen;
+        }
+    }
 }
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.numbers {
+    width: 80%;
+    margin: 0 auto;
+    ul {
+        position: relative;
+        top: -1em;
+        background: $bg-color;
+        li {
+            float: left;
+            width: 25%;
+            box-sizing: border-box;
+            border-top: 1px solid $secondy-text-color;
+            border-bottom: 1px solid $secondy-text-color;
+            border-left: 1px solid $secondy-text-color;
+            &:last-child {
+                border-right: 1px solid $secondy-text-color;
+            }
+            h2 {
+                font-size: 2em;
+                padding: 1em 0;
+            }
+            h3 {
+                padding: 0 0 2em 0;
+            }
+        }
+        @include clearfix;
+    }
 }
