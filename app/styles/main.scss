@@ -95,6 +95,19 @@ body {
     }
 }
 .how-it-works {
+    h2 {
+        font-size: 2em;
+        text-transform: uppercase;
+        padding: 1em 0;
+        &:after {
+            display: block;
+            content: "";
+            background-color: $border-color;
+            width: 2em;
+            height: .1em;
+            margin: .4em auto;
+        }
+    }
     li {
         float: left;
         width: 33.33%;
@@ -109,67 +122,49 @@ body {
         //     left: 50%;
         //     margin: 0 2em;
         // }
-        // &:last-child:before {
-        //     display: none;
-        // }
-    }
-    .number {
-        font-size: 2em;
-        color: $border-color;
-        border: 1px solid $border-color;
-        width: 1em;
-        height: 1em;
-        display: block;
-        margin: 1em auto 2em auto;
-        padding: .4em;
-        @include border-radius(100%);
-        background-color: $bg-color;
-    }
-    i {
-        font-size: 3.6em;
-    }
-    .icon-keyboard {
-        color: #ECA95A;
-    }
-    .icon-pencil {
-        color: #AC9CD2;
-    }
-    .icon-man-woman {
-        color: #4D99CB;
-    }
-    h2 {
-        font-size: 2em;
-        text-transform: uppercase;
-        padding: 1em 0;
-        &:after {
-            display: block;
-            content: "";
-            background-color: $border-color;
-            width: 2em;
-            height: .1em;
-            margin: .4em auto;
+        &:last-child:before {
+            display: none;
         }
-    }
-    h3 {
-        font-size: 1.6em;
-        font-weight: bold;
-        padding: 1em 0;
-        &:after {
-            display: block;
-            content: "";
+        .number {
+            font-size: 2em;
+            color: $border-color;
+            border: 1px solid $border-color;
+            width: 1em;
             height: 1em;
+            display: block;
+            margin: 1em auto 2em auto;
+            padding: .4em;
+            @include border-radius(100%);
+            background-color: $bg-color;
+        }
+        i {
+            font-size: 3.6em;
+        }
+        .icon-keyboard {
+            color: #ECA95A;
+        }
+        .icon-pencil {
+            color: #AC9CD2;
+        }
+        .icon-man-woman {
+            color: #4D99CB;
+        }
+        h3 {
+            font-size: 1.6em;
+            font-weight: bold;
+            padding: 1em 0;
+            &:after {
+                display: block;
+                content: "";
+                height: 1em;
+            }
+        }
+        p {
+            display: block;
+            padding: 0 0 1em 4em;
+            width: 80%;
+            text-align: left;
+            line-height: 160%;
         }
     }
-    p {
-        display: block;
-        padding: 0 0 1em 4em;
-        width: 80%;
-        text-align: left;
-        line-height: 160%;
-    }
-    // p::before {
-    //     content: "";
-    //     display: block;
-    //     color: #6e6e6e;
-    // }
 }
